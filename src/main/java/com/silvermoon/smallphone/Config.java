@@ -1,4 +1,4 @@
-package com.myname.mymodid;
+package com.silvermoon.smallphone;
 
 import java.io.File;
 
@@ -11,7 +11,8 @@ public class Config {
     public static void synchronizeConfiguration(File configFile) {
         Configuration configuration = new Configuration(configFile);
 
-        greeting = configuration.getString("greeting", Configuration.CATEGORY_GENERAL, greeting, "How shall I greet?");
+        greeting = configuration
+            .getString("greeting", Configuration.CATEGORY_GENERAL, greeting, "You have a new phone now!");
 
         if (configuration.hasChanged()) {
             configuration.save();
