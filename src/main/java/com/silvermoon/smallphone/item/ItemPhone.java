@@ -23,7 +23,7 @@ public class ItemPhone extends Item {
     private static final String NBT_ON_SHOT = "onShot";
     private static final String NBT_TIMESTAMP = "timestamp";
     private static final long COOLDOWN_SECONDS = 300;
-    private static final int POTION_DURATION_TICKS = (int)COOLDOWN_SECONDS * 20;
+    private static final int POTION_DURATION_TICKS = (int) COOLDOWN_SECONDS * 20;
     private static final int POTION_AMPLIFIER_V = 4;
 
     public ItemPhone() {
@@ -35,7 +35,7 @@ public class ItemPhone extends Item {
 
     @SideOnly(Side.CLIENT)
     public void addInformation(ItemStack p_77624_1_, EntityPlayer p_77624_2_, List<String> p_77624_3_,
-                               boolean p_77624_4_) {
+        boolean p_77624_4_) {
         p_77624_3_.add(StatCollector.translateToLocal("item.smallphone.desc.1"));
         p_77624_3_.add(" ");
         p_77624_3_.add(" ");
@@ -43,8 +43,8 @@ public class ItemPhone extends Item {
     }
 
     @Override
-    public boolean onItemUse(ItemStack itemStack, EntityPlayer player, World world, int x,
-                             int y, int z, int side, float hitX, float hitY, float hitZ) {
+    public boolean onItemUse(ItemStack itemStack, EntityPlayer player, World world, int x, int y, int z, int side,
+        float hitX, float hitY, float hitZ) {
 
         long currentTimeSeconds = System.currentTimeMillis() / 1000;
 
@@ -60,7 +60,10 @@ public class ItemPhone extends Item {
             if (timeDifference < COOLDOWN_SECONDS) {
                 if (world.isRemote) {
                     long remainingSeconds = COOLDOWN_SECONDS - timeDifference;
-                    player.addChatMessage(new ChatComponentText(String.format(StatCollector.translateToLocal("chat.smallphone.cooldown"),remainingSeconds)));
+                    player.addChatMessage(
+                        new ChatComponentText(
+                            String
+                                .format(StatCollector.translateToLocal("chat.smallphone.cooldown"), remainingSeconds)));
                 }
             } else {
                 int onShot = nbt.getInteger(NBT_ON_SHOT);
@@ -88,12 +91,16 @@ public class ItemPhone extends Item {
                 nbt.setInteger(NBT_ON_SHOT, 1);
                 nbt.setLong(NBT_TIMESTAMP, currentTimeSeconds);
 
-                player.addPotionEffect(new PotionEffect(Potion.resistance.id, POTION_DURATION_TICKS, POTION_AMPLIFIER_V));
-                player.addPotionEffect(new PotionEffect(Potion.moveSpeed.id, POTION_DURATION_TICKS, POTION_AMPLIFIER_V));
+                player
+                    .addPotionEffect(new PotionEffect(Potion.resistance.id, POTION_DURATION_TICKS, POTION_AMPLIFIER_V));
+                player
+                    .addPotionEffect(new PotionEffect(Potion.moveSpeed.id, POTION_DURATION_TICKS, POTION_AMPLIFIER_V));
                 player.addPotionEffect(new PotionEffect(Potion.jump.id, POTION_DURATION_TICKS, POTION_AMPLIFIER_V));
-                player.addPotionEffect(new PotionEffect(Potion.waterBreathing.id, POTION_DURATION_TICKS, POTION_AMPLIFIER_V));
+                player.addPotionEffect(
+                    new PotionEffect(Potion.waterBreathing.id, POTION_DURATION_TICKS, POTION_AMPLIFIER_V));
                 player.addPotionEffect(new PotionEffect(Potion.digSpeed.id, POTION_DURATION_TICKS, POTION_AMPLIFIER_V));
-                player.addPotionEffect(new PotionEffect(Potion.regeneration.id, POTION_DURATION_TICKS, POTION_AMPLIFIER_V));
+                player.addPotionEffect(
+                    new PotionEffect(Potion.regeneration.id, POTION_DURATION_TICKS, POTION_AMPLIFIER_V));
             }
 
             if (world.isRemote) {
