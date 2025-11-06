@@ -1,0 +1,14 @@
+{
+  "required": true,
+  "minVersion": "0.8.5-GTNH",
+  "package": "com.silvermoon.smallphone.mixins",
+  "refmap": "mixins.smallphone.refmap.json",
+  "target": "@env(DEFAULT)",
+  "compatibilityLevel": "JAVA_8",
+  "mixins": [],
+  "client": [
+    "MixinGuiScreen",
+    "MixinEntityRenderer"
+  ],
+  "server": []
+}
