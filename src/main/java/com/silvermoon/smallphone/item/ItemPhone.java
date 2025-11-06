@@ -60,7 +60,7 @@ public class ItemPhone extends Item {
             if (timeDifference < COOLDOWN_SECONDS) {
                 if (world.isRemote) {
                     long remainingSeconds = COOLDOWN_SECONDS - timeDifference;
-                    player.addChatMessage(new ChatComponentText("HDR处理中，请等待" + remainingSeconds + "秒..."));
+                    player.addChatMessage(new ChatComponentText(String.format(StatCollector.translateToLocal("chat.smallphone.cooldown"),remainingSeconds)));
                 }
             } else {
                 int onShot = nbt.getInteger(NBT_ON_SHOT);
