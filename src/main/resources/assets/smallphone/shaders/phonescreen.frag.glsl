@@ -67,16 +67,16 @@ void main() {
             vec4 reflection = texture2D(u_BackgroundTexture, flipped_bg_uv * 0.5 + 0.25);
 
             //Flash Lamp
-            vec2 light_pos = vec2(0.35, 0.7);
+            vec2 light_pos = vec2(0.7, 0.6);
             vec3 glare_color = vec3(1.0, 1.0, 1.0);
             float aspect_ratio = u_Resolution.x / u_Resolution.y;
             vec2 scaled_pos = vec2(game_uv.x * aspect_ratio, game_uv.y);
             vec2 scaled_light_pos = vec2(light_pos.x * aspect_ratio, light_pos.y);
             float dist_to_light = distance(scaled_pos, scaled_light_pos);
             float core_brightness = 10.0;
-            float core_strength = smoothstep(0.05, 0.03, dist_to_light);
+            float core_strength = smoothstep(0.03, 0.01, dist_to_light);
             float halo_brightness = 0.7;
-            float halo_strength = smoothstep(0.15, 0.05, dist_to_light);
+            float halo_strength = smoothstep(0.12, 0.05, dist_to_light);
 
             //Dazzle
             float haze_power = 2.5;
