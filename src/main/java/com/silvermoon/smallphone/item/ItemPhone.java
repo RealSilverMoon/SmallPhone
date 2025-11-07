@@ -13,7 +13,7 @@ import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
 
-import com.silvermoon.smallphone.PhoneScreenRenderer;
+import com.silvermoon.smallphone.SmallPhone;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -45,7 +45,6 @@ public class ItemPhone extends Item {
     @Override
     public boolean onItemUse(ItemStack itemStack, EntityPlayer player, World world, int x, int y, int z, int side,
         float hitX, float hitY, float hitZ) {
-
         long currentTimeSeconds = System.currentTimeMillis() / 1000;
 
         if (itemStack.stackTagCompound == null) {
@@ -81,7 +80,7 @@ public class ItemPhone extends Item {
                     }
 
                     if (world.isRemote) {
-                        PhoneScreenRenderer.INSTANCE.isEnabled = false;
+                        SmallPhone.proxy.setRenderStatus(false);
                     }
                 }
             }
@@ -104,7 +103,7 @@ public class ItemPhone extends Item {
             }
 
             if (world.isRemote) {
-                PhoneScreenRenderer.INSTANCE.isEnabled = true;
+                SmallPhone.proxy.setRenderStatus(true);
             }
         }
 

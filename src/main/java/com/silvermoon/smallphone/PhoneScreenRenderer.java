@@ -21,12 +21,15 @@ import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.eventhandler.EventPriority;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.gameevent.TickEvent;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
+@SideOnly(Side.CLIENT)
 public class PhoneScreenRenderer {
 
     public static final PhoneScreenRenderer INSTANCE = new PhoneScreenRenderer();
     private static final String MODID = "smallphone";
-
+    public boolean isServerModded = false;
     private ShaderProgram shaderProgram;
     private ResourceLocation backgroundTexture;
     private Framebuffer postFramebuffer;
