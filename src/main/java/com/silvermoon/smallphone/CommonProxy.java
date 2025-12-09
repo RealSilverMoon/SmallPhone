@@ -1,6 +1,7 @@
 package com.silvermoon.smallphone;
 
 import com.silvermoon.smallphone.item.ItemLoader;
+import com.silvermoon.smallphone.loader.RecipeLoader;
 import com.silvermoon.smallphone.network.PacketHandler;
 
 import cpw.mods.fml.common.FMLCommonHandler;
@@ -24,6 +25,7 @@ public class CommonProxy {
             .bus()
             .register(new EventHandler());
         PacketHandler.register();
+        RecipeLoader.loadRecipes();
     }
 
     // postInit "Handle interaction with other mods, complete your setup based on this." (Remove if not needed)
